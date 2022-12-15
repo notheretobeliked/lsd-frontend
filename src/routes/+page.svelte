@@ -12,12 +12,11 @@
   $: console.log(activeSection)
   
 </script>
-
-<div class="h-screen flex flex-row">
-  <Logo />
-  <Homepagesection bind:activeSection={activeSection} section="home" gradient on:activateSection={checksection} />
-  <Homepagesection bind:activeSection={activeSection} section="about" on:activateSection={checksection} />
-  <Homepagesection bind:activeSection={activeSection} section="actualites" on:activateSection={checksection} />
-  <Homepagesection bind:activeSection={activeSection} section="editions" on:activateSection={checksection} />
-  <Homepagesection bind:activeSection={activeSection} section="credits" on:activateSection={checksection} />
+<Logo />
+<div class="h-screen flex flex-row homesection">
+  <Homepagesection title="Acceuil" bind:activeSection={activeSection} section="home" gradient on:activateSection={checksection} />
+  <Homepagesection title="A propos" bind:activeSection={activeSection} section="about" on:activateSection={checksection} />
+  <Homepagesection title="Actualités" bind:activeSection={activeSection} section="actualites" on:activateSection={checksection} />
+  <Homepagesection title="Edition" bind:activeSection={activeSection} section="editions" on:activateSection={checksection} />
+  <Homepagesection title="Crédits" bind:activeSection={activeSection} section="credits" on:activateSection={checksection} />
 </div>

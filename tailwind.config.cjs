@@ -11,7 +11,7 @@ module.exports = {
     },
     extend: {
       boxShadow: {
-        'right': '-15px 0 15px -15px rgba(0, 0, 0, 0.3)',
+        'right': '-15px 0 15px -5px rgba(0, 0, 0, 0.3)',
       }
     },
   },

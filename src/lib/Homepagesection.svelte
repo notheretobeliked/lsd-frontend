@@ -4,6 +4,7 @@
 
 
   export let section: string = "home"
+  export let title: string = "Home"
   export let activeSection: string = ""
   export let gradient: boolean = false
 
@@ -32,11 +33,11 @@
   {#if (!active)}
   <div class="{gradient ? 'bg-gradient-to-r from-blue-parrot to-salmon':'bg-salmon hover:bg-blue-parrot'} cursor-pointer drawer min-h-screen"
   on:click={activateSection} on:keypress={activateSection}>
-    <button class="drawer-link inline-block">{section}</button>
+    <button class="drawer-link inline-block">{title}</button>
   </div>
   {:else}
   <div class="content" in:fly="{{ duration: 2000 }}" style="width:70vw">
-    Content goes here
+    Contenu ici
   </div>
   {/if}
 </div>
