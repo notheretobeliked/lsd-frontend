@@ -1,7 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
 	import { fly } from 'svelte/transition'
-
+  import { goto } from '$app/navigation';
 
   export let section: string = "home"
   export let title: string = "Home"
@@ -16,6 +16,7 @@
 		dispatch('activateSection', {
 			section
 		})
+    goto(`/${section}`, { replaceState: true })
 	}
 
 
@@ -37,7 +38,7 @@
   </div>
   {:else}
   <div class="content" in:fly="{{ duration: 2000 }}" style="width:70vw">
-    Contenu ici
+    <slot></slot>
   </div>
   {/if}
 </div>
