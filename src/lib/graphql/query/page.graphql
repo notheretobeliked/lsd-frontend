@@ -1,0 +1,12 @@
+query Page($uri: ID!) {
+	page(id: $uri, idType: URI) {
+		id
+		content
+		title
+		date
+		uri
+		seo {
+			metaDesc
+		}
+	}
+}

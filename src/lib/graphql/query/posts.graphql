@@ -1,0 +1,25 @@
+query Posts {
+  generalSettings {
+    title
+  }
+  posts {
+    edges {
+      node {
+        uri
+        title
+        date
+        tags {
+          edges {
+            node {
+              name
+              slug
+            }
+          }
+        }
+        infos {
+          author
+        }
+      }
+    }
+  }
+}

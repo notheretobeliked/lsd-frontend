@@ -8,18 +8,27 @@
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"gen:graphql": "export $(grep ^GRAPHQL_ENDPOINT .env | xargs) && graphql-codegen --config codegen.json",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
+		"@babel/core": "7",
+		"@graphql-codegen/cli": "^3.3.0",
+		"@graphql-codegen/introspection": "^3.0.1",
+		"@graphql-codegen/typescript": "^3.0.3",
+		"@graphql-codegen/typescript-document-nodes": "^3.0.3",
+		"@graphql-codegen/typescript-operations": "^3.0.3",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
+		"@types/node": "^18.15.12",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
 		"autoprefixer": "^10.4.13",
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
+		"graphql": "14",
 		"postcss": "^8.4.19",
 		"prettier": "^2.8.0",
 		"prettier-plugin-svelte": "^2.8.1",
@@ -27,9 +36,17 @@
 		"svelte-check": "^2.9.2",
 		"svelte-preprocess": "^5.0.0",
 		"tailwindcss": "^3.2.4",
+		"ts-node": "^10.9.1",
 		"tslib": "^2.4.1",
 		"typescript": "^4.9.3",
 		"vite": "^4.0.0"
 	},
-	"type": "module"
+	"type": "module",
+	"peerDependencies": {
+		"@types/node": "^18.15.12",
+		"ts-node": "^10.9.1"
+	},
+	"dependencies": {
+		"sveltekit-embed": "^0.0.12"
+	}
 }
