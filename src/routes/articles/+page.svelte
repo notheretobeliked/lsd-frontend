@@ -8,8 +8,7 @@
 
   export let data: PageData;
 
-	console.log(data.slug)
-  let activeSection:string = data.slug ?? 'home'
+  let activeSection:string = data.slug ?? 'articles'
 	
   function checksection(event: CustomEvent) {
     activeSection = event.detail.section

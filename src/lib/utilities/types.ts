@@ -45,6 +45,10 @@ export interface PageData {
 	page: Page
 }
 
+export interface PostData {
+	post: Page
+}
+
 export interface PageQueryVariables {
 	uri: string
 }
