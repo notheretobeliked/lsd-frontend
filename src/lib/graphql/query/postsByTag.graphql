@@ -1,0 +1,23 @@
+query Posts($tag: String ) {
+  posts(where: {tag: $tag}) {
+    edges {
+      node {
+        uri
+        title
+        date
+        tags {
+          edges {
+            node {
+              name
+              slug
+            }
+          }
+        }
+        infos {
+          author
+          embed
+        }
+      }
+    }
+  }
+}
