@@ -1,27 +1,28 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-	import { fly } from 'svelte/transition';
-	import { goto } from '$app/navigation';
+	import { createEventDispatcher } from 'svelte'
+	import { fly } from 'svelte/transition'
+	import { goto } from '$app/navigation'
 
-	export let section: string = 'home';
-	export let title: string = 'Home';
-	export let activeSection: string = '';
-	export let gradient: boolean = false;
+	export let section: string = 'home'
+	export let title: string = 'Home'
+	export let activeSection: string = ''
+	export let gradient: boolean = false
 
-	let active: boolean = false;
+	let active: boolean = false
 
-	const dispatch = createEventDispatcher();
+	const dispatch = createEventDispatcher()
 
 	function activateSection() {
+		event?.preventDefault()
 		dispatch('activateSection', {
 			section
-		});
-		goto(`/${section}`, { replaceState: true });
+		})
+		goto(`/${section}`, { replaceState: true })
 	}
 
 	$: {
-		active = activeSection == section;
-		console.log(`activesection: ${activeSection}, Section: ${section}`);
+		active = activeSection == section
+		console.log(`activesection: ${activeSection}, Section: ${section}`)
 	}
 </script>
 
@@ -30,15 +31,17 @@
 	class:active
 >
 	{#if !active}
-		<div
-			class="fixed {gradient
-				? 'bg-gradient-to-r from-blue-parrot to-salmon'
-				: 'bg-salmon hover:bg-blue-parrot'} cursor-pointer drawer min-h-screen"
-			on:click={activateSection}
-			on:keypress={activateSection}
-		>
-			<button class="drawer-link inline-block">{title}</button>
-		</div>
+		<a href="/{section}">
+			<div
+				class="fixed {gradient
+					? 'bg-gradient-to-r from-blue-parrot to-salmon'
+					: 'bg-salmon hover:bg-blue-parrot'} cursor-pointer drawer min-h-screen"
+				on:click={activateSection}
+				on:keypress={activateSection}
+			>
+				<button class="drawer-link inline-block">{title}</button>
+			</div>
+		</a>
 	{:else}
 		<div class="content" in:fly={{ duration: 2000 }}>
 			<slot />

@@ -2,7 +2,7 @@
 
 </script>
 
-<a href="/">
+<a href="/articles">
 <div class="fixed transition-all hover:bg-salmon bg-blue-parrot cursor-pointer drawer min-h-screen flex flex-col justify-between">
   <p class="drawer-link inline-block">la</p>
   <p class="drawer-link inline-block">surface</p>
