@@ -48,15 +48,16 @@
 
 <style>
 	.page-section {
-		max-width: 5vw;
+		width: 5vw;
 	}
 
 	.page-section:not(.active):hover {
-		max-width: 6vw;
+		width: 6vw;
 	}
 
 	.page-section.active {
-		max-width: 80vw;
+		max-width: 87vw;
+		width: 100%;
 	}
 
 	.drawer-link {

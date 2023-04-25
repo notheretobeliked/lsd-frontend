@@ -41,12 +41,31 @@ export interface Page {
 	seo: PageSEO
 }
 
+export type EmbedType = 'vimeo' | 'soundcloud' | null;
+
+export interface Article {
+	uri: string
+	title: string
+	date: string
+	content: string
+	tags: {
+		edges: {
+			node: tag
+		}[]
+	}
+	infos: {
+		author: string
+		embed: string
+	}
+	seo: PageSEO
+}
+
 export interface PageData {
 	page: Page
 }
 
 export interface PostData {
-	post: Page
+	post: Article
 }
 
 export interface PageQueryVariables {

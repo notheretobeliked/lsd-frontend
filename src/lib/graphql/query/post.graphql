@@ -8,5 +8,17 @@ query Post($uri: ID!) {
     seo {
       description
     }
+    tags {
+      edges {
+        node {
+          name
+          slug
+        }
+      }
+    }
+    infos {
+      embed
+      author
+    }
   }
 }
