@@ -18,16 +18,20 @@ export interface HomePageNode {
 }
 
 export interface HomepageData {
+	posts: Posts[]
+	generalSettings: {
+		title: string
+	}
+	alltags: {
+		tag: tag[]
+	}
+}
+
+export interface Posts {
 	posts: {
 		edges: {
 			node: HomePageNode
 		}[]
-	}
-	generalSettings: {
-		title: string
-	}
-	alltags: { 
-		tag: tag []
 	}
 }
 
@@ -44,7 +48,7 @@ export interface Page {
 	seo: PageSEO
 }
 
-export type EmbedType = 'vimeo' | 'soundcloud' | null;
+export type EmbedType = 'vimeo' | 'soundcloud' | null
 
 export interface Article {
 	uri: string

@@ -33,13 +33,13 @@
 	{#if !active}
 		<a href="/{section}">
 			<div
-				class="fixed {gradient
+				class=" {gradient
 					? 'bg-gradient-to-r from-blue-parrot to-salmon'
 					: 'bg-salmon hover:bg-blue-parrot'} cursor-pointer drawer min-h-screen"
 				on:click={activateSection}
 				on:keypress={activateSection}
 			>
-				<button class="drawer-link inline-block">{title}</button>
+				<button class="drawer-link inline-block whitespace-nowrap">{title}</button>
 			</div>
 		</a>
 	{:else}

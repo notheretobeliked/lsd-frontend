@@ -6,7 +6,10 @@ module.exports = {
 			transparent: 'transparent',
 			current: 'currentColor',
 			white: '#ffffff',
-			'salmon': '#ff9e6e',
+			'salmon': {
+				 DEFAULT: '#ff9e6e',
+				 'light': '#ffdf9f',
+				},
 			'blue-parrot': '#7e7cf8'
 		},
 		fontFamily: {

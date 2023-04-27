@@ -1,11 +1,16 @@
 <script lang="ts">
 	import '../../app.css'
-	import Homepagesection from '$lib/components/organisms/Homepagesection.svelte'
+  import { fly } from 'svelte/transition'
+  import { backOut } from 'svelte/easing'
+  import Homepagesection from '$lib/components/organisms/Homepagesection.svelte'
 	import Logo from '$lib/components/atoms/Logo.svelte'
+  import Tag from '$lib/components/atoms/Tag.svelte'
+  import Draggable from '$lib/components/utilities/Draggable.svelte'
 	import Postpush from '$lib/components/organisms/Postpush.svelte'
-  import {writable} from 'svelte/store'
+	import { postsStore, tagStore } from '$lib/utilities/stores'
 
 	import type { PageData } from './$types'
+  import type { Posts, Article } from '$lib/utilities/types'
 
 	export let data: PageData
 
@@ -17,29 +22,34 @@
 
 	let { posts, alltags } = data
 
-  const postsStore = writable(posts)
+  let activeTag: string = 'all'
 
+	$postsStore = posts
+  $tagStore = activeTag
 
-	const filterPosts = (slug:string) => {
-    let newposts = posts.filter((item) => { 
-      console.log(item.tagsearch)
-      return (item.tagsearch.includes(slug)) }
-    )
-    $postsStore = newposts // update posts with the fetched data
+	const filterPosts = (slug: string) => {
+		let newPosts: Posts
+		if (slug === 'all') {
+			newPosts = posts
+		} else {
+			newPosts = posts.filter((item: Article) => item.tagsearch.includes(slug))
+		}
+		$postsStore = newPosts // update posts with the fetched data
+    $tagStore = slug
 	}
 
-	$: {
-    $postsStore
-	}
+  $: $tagStore, filterPosts($tagStore as string)
 </script>
 
 <Logo />
-<div class="fixed left-0 top-48 z-99 bg-blue-parrot w-96 p-30 rounded flex flex-wrap">
-  {#each alltags as tag}
-    <button on:click={() => filterPosts(tag.slug)} class="text-white text-16 font-bold uppercase mr-10 mb-10">{tag.name}</button>
-  {/each}
-
+<Draggable>
+<div class="flex flex-wrap gap-4">
+	<Tag name="Tous" slug="all" />
+  {#each alltags as {slug, name}}
+    <Tag {name} {slug} />
+	{/each}
 </div>
+</Draggable>
 <div class="h-screen flex flex-row homesection">
 	<Homepagesection
 		title="Articles"
@@ -50,8 +60,16 @@
 	>
 		{#if activeSection == 'articles'}
 			<div>
-				{#each $postsStore ?? [] as post}
+				{#each $postsStore ? $postsStore : posts as post, i}
+        <div
+        transition:fly={{
+          y: 100,
+          delay: 200 * i,
+          easing: backOut
+        }}
+>
 					<Postpush {...post} />
+        </div>
 				{/each}
 			</div>
 		{/if}

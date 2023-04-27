@@ -6,6 +6,11 @@
 	export let uri: string = '/articles'
 	export let tags: Array<tag>
 	export let huge: boolean = false
+	import {writable} from 'svelte/store'
+
+	const changeTag = (tag:string) => {
+		console.log('change tag')
+	}
 </script>
 
 <article class="mx-20 border-black border-b pb-8 hover:text-blue-parrot">
@@ -16,6 +21,7 @@
 			<p class="text-center italic mt-4">{author}</p>
 		{/if}
 	</hgroup>
+	</a>
 		{#if tags}
 			<div class="flex flex-row gap-3 justify-center mt-4">
 				{#each tags as { name, slug }}
@@ -23,5 +29,5 @@
 				{/each}
 			</div>
 		{/if}
-</a>
+
 </article>
