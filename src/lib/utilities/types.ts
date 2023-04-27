@@ -26,6 +26,9 @@ export interface HomepageData {
 	generalSettings: {
 		title: string
 	}
+	alltags: { 
+		tag: tag []
+	}
 }
 
 export interface PageSEO {
@@ -48,6 +51,7 @@ export interface Article {
 	title: string
 	date: string
 	content: string
+	tagsearch: Array<string>
 	tags: {
 		edges: {
 			node: tag
