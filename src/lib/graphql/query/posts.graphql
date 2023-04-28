@@ -3,23 +3,25 @@ query Posts {
     title
   }
   posts {
-    edges {
-      node {
-        uri
-        title
-        date
-        tags {
-          edges {
-            node {
-              name
-              slug
-            }
-          }
+    nodes {
+      uri
+      title
+      date
+      tags {
+        nodes {
+          name
+          slug
         }
-        infos {
-          author
-          embed
+      }
+      categories {
+        nodes {
+          name
+          slug
         }
+      }
+      infos {
+        author
+        embed
       }
     }
   }

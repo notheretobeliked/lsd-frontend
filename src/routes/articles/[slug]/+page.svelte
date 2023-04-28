@@ -24,10 +24,10 @@
 		gradient
 		on:activateSection={checksection}
 	>
-		<div>
+		<div class="lg:px-12">
 			<hgroup>
-				<h1>{data.title}</h1>
-				<h2>{data.author}</h2>
+				<h1 class="text-4xl">{data.title}</h1>
+				<h2 class="text-center">{data.author}</h2>
 			</hgroup>
 			<div>
 				{@html data.content || ''}
@@ -36,6 +36,9 @@
 				{/if}
 				{#if data.embed && data.embedType === 'vimeo'}
 					<Vimeo vimeoId={data.embed} />
+				{/if}
+				{#if data.embed && data.embedType === 'soundcloud'}
+					<SoundCloud soundcloudLink={data.embed} />
 				{/if}
 			</div>
 		</div>

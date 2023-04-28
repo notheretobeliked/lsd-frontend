@@ -12,7 +12,6 @@
 		activeSection = event.detail.section
 	}
 
-	$: console.log(activeSection)
 
 </script>
 

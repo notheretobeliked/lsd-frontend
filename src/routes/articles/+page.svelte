@@ -39,6 +39,8 @@
 	}
 
   $: $tagStore, filterPosts($tagStore as string)
+
+	console.log($postsStore)
 </script>
 
 <Logo />
@@ -70,6 +72,7 @@
 >
 					<Postpush {...post} />
         </div>
+
 				{/each}
 			</div>
 		{/if}

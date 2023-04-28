@@ -27,7 +27,7 @@
 </script>
 
 <div
-	class="page-section flex flex-col transition-all duration-500 flex-grow shadow-right min-h-screen"
+	class="max-h-screen overflow-y-scroll page-section flex flex-col transition-all duration-500 flex-grow shadow-right min-h-screen"
 	class:active
 >
 	{#if !active}

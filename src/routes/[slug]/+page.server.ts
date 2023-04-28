@@ -59,7 +59,6 @@ export const load = (async ({ params }) => {
 				checkResponse(response)
 
 				const { data }: { data: PageData } = await response.json()
-				console.log(data)
 				if (!data) {
 					throw error(502, 'Unexpected JSON repsonse')
 				}

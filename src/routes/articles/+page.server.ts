@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types'
-import type { HomepageData, tag } from '$lib/utilities/types'
+import type { HomepageData, tag, HomePageNode } from '$lib/utilities/types'
 import postsQuery from '$lib/graphql/query/posts.graphql?raw'
 import { checkResponse, graphqlQuery } from '$lib/utilities/graphql'
 import { error } from '@sveltejs/kit'
@@ -15,13 +15,14 @@ export const load = (async ({ params }) => {
 			throw error(502, 'Unexpected JSON repsonse')
 		}
 
-		const { generalSettings, posts: dataPosts } = data
+		const { generalSettings, posts: { nodes: dataPosts } } = data
 
-    const alltags: tag[] = Object.values(
-      dataPosts.edges
-        .map((edge) => edge.node.tags.edges.map((edge) => ({
-          name: edge.node.name,
-          slug: edge.node.slug,
+		console.log(dataPosts)
+
+    const tags: tag[] = Object.values(
+      dataPosts.map((node) => node.tags.nodes.map((node) => ({
+          name: node.name,
+          slug: node.slug,
         })))
         .flat()
         .reduce((tags: { [key: string]: tag }, tag: tag) => {
@@ -33,19 +34,43 @@ export const load = (async ({ params }) => {
         }, {})
     ).sort((a, b) => a.name.localeCompare(b.name));
     
+		const alltags: tag[] = Object.values(
+      dataPosts.map((node) => node.categories.nodes.map((node) => ({
+          name: node.name,
+          slug: node.slug,
+        })))
+        .flat()
+        .reduce((tags: { [key: string]: tag }, tag: tag) => {
+          const key = JSON.stringify(tag);
+          if (!tags[key]) {
+            tags[key] = tag;
+          }
+          return tags;
+        }, {})
+    ).concat(tags);
     
     
-
-    const posts = dataPosts.edges.map((edge) => {
-			const { node } = edge
+    const posts = dataPosts.map((node) => {
 			const { uri, date, title } = node
-      const tagsearch = node.tags.edges.map((edge) => { return edge.node.slug })
-			const tags = node.tags.edges.map((edge) => {
+      const thetags = node.tags.nodes.map((node) => { return node.slug })
+			const tagsearch = node.categories.nodes.map((node) => { return node.slug }).concat(thetags)
+
+			const categories = node.categories.nodes.map((cat: tag) => {
 				return {
-					name: edge.node.name,
-					slug: edge.node.slug
+					name: cat.name,
+					slug: cat.slug
 				}
 			})
+
+			const tags = node.tags.nodes.map((node) => {
+				return {
+					name: node.name,
+					slug: node.slug
+				}
+			}).concat(categories)
+
+			const huge = tagsearch.includes('recit')
+
 			const author = node.infos.author
 
       
@@ -54,9 +79,11 @@ export const load = (async ({ params }) => {
 				uri,
 				title,
 				tags,
+				categories,
 				author,
 				slug,
         tagsearch,
+				huge
 			}
 		})
 

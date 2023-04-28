@@ -9,16 +9,20 @@ query Post($uri: ID!) {
       description
     }
     tags {
-      edges {
-        node {
-          name
-          slug
-        }
+      nodes {
+        name
+        slug
       }
     }
     infos {
       embed
       author
+    }
+    categories {
+      nodes {
+        name
+        slug
+      }
     }
   }
 }

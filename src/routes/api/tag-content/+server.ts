@@ -42,7 +42,6 @@ export const GET = (async ({ url }: RequestEvent) => {
 			}
 		})
 
-		console.log(posts)
     return json(posts)
 		
 	} catch (err: unknown) {

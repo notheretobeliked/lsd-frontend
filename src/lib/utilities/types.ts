@@ -8,9 +8,10 @@ export interface HomePageNode {
 	title: string
 	date: string
 	tags: {
-		edges: {
-			node: tag
-		}[]
+		edges: tag[]
+	}
+	categories: {
+		edges: tag[]
 	}
 	infos: {
 		author: string
@@ -28,11 +29,9 @@ export interface HomepageData {
 }
 
 export interface Posts {
-	posts: {
-		edges: {
-			node: HomePageNode
-		}[]
-	}
+  posts: {
+    nodes: HomePageNode[]
+  }
 }
 
 export interface PageSEO {
@@ -57,13 +56,14 @@ export interface Article {
 	content: string
 	tagsearch: Array<string>
 	tags: {
-		edges: {
-			node: tag
-		}[]
+		nodes: tag[]
 	}
 	infos: {
 		author: string
 		embed: string
+	}
+	categories: {
+		nodes: tag[]
 	}
 	seo: PageSEO
 }

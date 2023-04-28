@@ -12,6 +12,18 @@
   h1 {
     @apply font-arsonist text-9xl text-center;
   }
+
+  .content h1 {
+    @apply mt-12 mb-5;
+  }
+
+  .content p {
+    @apply mb-4
+  }
+
+  .content h2 {
+    @apply font-arsonist text-2xl text-left uppercase;
+  }
 }
 
 @font-face {
