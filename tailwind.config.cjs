@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
-	safelist: ['content'],
+	safelist: ['content', 'ol', 'ul'],
 	theme: {
 		colors: {
 			transparent: 'transparent',
