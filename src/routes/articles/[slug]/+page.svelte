@@ -2,6 +2,7 @@
 	import type { PageData } from './$types'
 	import Homepagesection from '$lib/components/organisms/Homepagesection.svelte'
 	import Logo from '$lib/components/atoms/Logo.svelte'
+	import Download from '$lib/components/atoms/Download.svelte'
 	import { SoundCloud, Vimeo } from 'sveltekit-embed'
 
 	export let data: PageData
@@ -13,6 +14,10 @@
 	}
 
 	$: console.log(activeSection)
+
+	const { title, author, embedType, embed, pdf, content } = data
+
+	console.log(pdf)
 </script>
 
 <Logo />
@@ -26,19 +31,22 @@
 	>
 		<div class="lg:px-12">
 			<hgroup>
-				<h1 class="text-4xl">{data.title}</h1>
-				<h2 class="text-center">{data.author}</h2>
+				<h1 class="text-4xl">{title}</h1>
+				<h2 class="text-center">{author}</h2>
 			</hgroup>
 			<div>
-				{@html data.content || ''}
-				{#if data.embed && data.embedType === 'soundcloud'}
-					<SoundCloud soundcloudLink={data.embed} />
+				{@html content || ''}
+				{#if embed && embedType === 'soundcloud'}
+					<SoundCloud soundcloudLink={embed} />
 				{/if}
-				{#if data.embed && data.embedType === 'vimeo'}
-					<Vimeo vimeoId={data.embed} />
+				{#if embed && embedType === 'vimeo'}
+					<Vimeo vimeoId={embed} />
 				{/if}
-				{#if data.embed && data.embedType === 'soundcloud'}
-					<SoundCloud soundcloudLink={data.embed} />
+				{#if embed && embedType === 'soundcloud'}
+					<SoundCloud soundcloudLink={embed} />
+				{/if}
+				{#if pdf}
+					<Download mimeType={pdf.mimeType} mediaItemUrl={pdf.mediaItemUrl} title={pdf.title} fileSize={pdf.fileSize} />
 				{/if}
 			</div>
 		</div>

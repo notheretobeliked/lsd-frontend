@@ -61,6 +61,15 @@ export interface Article {
 	infos: {
 		author: string
 		embed: string
+		pdf?: {
+			node: {
+				fileSize: number
+				mediaItemUrl: string
+				mediaType: string
+				mimeType: string
+				title: string
+			}
+		}
 	}
 	categories: {
 		nodes: tag[]

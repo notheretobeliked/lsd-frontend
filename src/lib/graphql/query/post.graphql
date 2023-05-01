@@ -15,9 +15,19 @@ query Post($uri: ID!) {
       }
     }
     infos {
-      embed
       author
+      embed
+      pdf {
+        node {
+          fileSize
+          mediaItemUrl
+          mediaType
+          mimeType
+          title
+        }
+      }
     }
+
     categories {
       nodes {
         name

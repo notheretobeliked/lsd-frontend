@@ -29,7 +29,7 @@ export const load = (async ({ params }) => {
 					seo: { description },
 				} = data.post
 
-				const {author } = data.post.infos
+				const {author, pdf } = data.post.infos
 				let { embed } = data.post.infos
 				const tags = data.post.tags.nodes.map((node: tag) => {
 					return {
@@ -52,7 +52,7 @@ export const load = (async ({ params }) => {
 				embedType === 'vimeo' && (embed = getVimeoId(embed))
 				
 				
-				return {
+				const returnObject = {
 					content: content,
 					description,
 					title,
@@ -61,8 +61,20 @@ export const load = (async ({ params }) => {
 					embed,
 					author,
 					embedType,
-					categories
-				}
+					categories,
+					pdf: pdf
+					? {
+							fileSize: pdf.node.fileSize,
+							mediaItemUrl: pdf.node.mediaItemUrl,
+							mediaType: pdf.node.mediaType,
+							mimeType: pdf.node.mimeType,
+							title: pdf.node.title,
+						}
+					: null,
+				}	
+				console.log(returnObject)
+				return returnObject
+				
 			} catch (err: unknown) {
 				const httpError = err as { status: number; message: string }
 				if (httpError.message) {

@@ -14,4 +14,4 @@
   }
 </script>
 
-<buttton bind:this={buttonElement} class="{slug} {$tagStore === slug ? 'bg-salmon' : 'bg-white'} shadow-sm shadow-blue-parrot px-3 py-1 hover:bg-salmon-light" on:click={changeTag(slug)} on:keypress={changeTag(slug)} >{name}</buttton>
+<buttton bind:this={buttonElement} class="{slug} {$tagStore === slug ? 'bg-salmon' : 'bg-white'} shadow-sm font-serif shadow-blue-parrot px-3 py-1 hover:bg-salmon-light" on:click={changeTag(slug)} on:keypress={changeTag(slug)} >{name}</buttton>

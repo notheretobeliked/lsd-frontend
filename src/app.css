@@ -18,7 +18,7 @@
   }
 
   .content p {
-    @apply mb-4
+    @apply mb-4 font-serif text-2xl;
   }
 
   .content h2 {
@@ -31,4 +31,19 @@
   font-weight: 800;
   src: url(/fonts/Arsonist-Black.woff2) format("woff2"), url(/fonts/Arsonist-Black.woff) format("woff");
   font-display: swap;
+}
+
+@font-face {
+  font-family: Signifier;
+  font-weight: 400;
+  src: url(/fonts/signifier-regular.woff2) format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Signifier;
+  font-weight: 400;
+  src: url(/fonts/signifier-regular-italic.woff2) format("woff2");
+  font-display: swap;
+  font-style: italic;
 }

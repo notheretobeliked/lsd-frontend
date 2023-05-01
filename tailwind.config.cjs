@@ -13,7 +13,8 @@ module.exports = {
 			'blue-parrot': '#7e7cf8'
 		},
 		fontFamily: {
-			arsonist: ['Arsonist-Black']
+			arsonist: ['Arsonist-Black'],
+			serif: ['Signifier', 'serif']
 		},
 
 		extend: {
