@@ -1,15 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
+	safelist: ['content'],
 	theme: {
 		colors: {
 			transparent: 'transparent',
 			current: 'currentColor',
 			white: '#ffffff',
-			'salmon': {
-				 DEFAULT: '#ff9e6e',
-				 'light': '#ffdf9f',
-				},
+			salmon: {
+				DEFAULT: '#ff9e6e',
+				light: '#ffdf9f'
+			},
 			'blue-parrot': '#7e7cf8'
 		},
 		fontFamily: {
@@ -24,4 +25,4 @@ module.exports = {
 		}
 	},
 	plugins: []
-};
+}

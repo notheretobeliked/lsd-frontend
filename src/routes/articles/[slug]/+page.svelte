@@ -46,7 +46,7 @@
 					<SoundCloud soundcloudLink={embed} />
 				{/if}
 				{#if pdf}
-					<Download mimeType={pdf.mimeType} mediaItemUrl={pdf.mediaItemUrl} title={pdf.title} fileSize={pdf.fileSize} />
+					<Download {...pdf} />
 				{/if}
 			</div>
 		</div>
