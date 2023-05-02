@@ -1,4 +1,17 @@
-import { localStorageStore } from 'fractils'
+import { writable } from 'svelte/store'
+import { browser } from '$app/environment'
 
-export const postsStore = localStorageStore('postsStore', [])
-export const tagStore = localStorageStore('tagStore', '')
+let initialTag = 'all'
+
+if (browser) {
+	initialTag = localStorage.getItem('tagStore') || initialTag
+}
+
+export const postsStore = writable([])
+export const tagStore = writable(initialTag)
+
+tagStore.subscribe((value) => {
+	if (browser) {
+		localStorage.setItem('tagStore', value)
+	}
+})
