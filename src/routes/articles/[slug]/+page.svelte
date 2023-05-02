@@ -17,7 +17,6 @@
 
 	const { title, author, embedType, embed, pdf, content } = data
 
-	console.log(pdf)
 </script>
 
 <Logo />

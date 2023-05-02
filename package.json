@@ -48,6 +48,7 @@
 		"ts-node": "^10.9.1"
 	},
 	"dependencies": {
+		"fractils": "^3.1.1",
 		"sveltekit-embed": "^0.0.12"
 	}
 }
