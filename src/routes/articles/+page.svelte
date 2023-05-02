@@ -64,7 +64,7 @@
 	>
 		{#if activeSection == 'articles'}
 			<div>
-				<OnMount>
+				
 				{#each $postsStore ? $postsStore : posts as post, i (post.uri)}
 					<div
 						out:fly={{
@@ -82,7 +82,7 @@
 						<Postpush {...post} />
 					</div>
 				{/each}
-			</OnMount>
+			
 			</div>
 		{/if}
 	</Homepagesection>
