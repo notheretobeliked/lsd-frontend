@@ -65,7 +65,7 @@
 		{#if activeSection == 'articles'}
 			<div>
 				<OnMount>
-				{#each $postsStore as post, i (post.uri)}
+				{#each $postsStore ? $postsStore : posts as post, i (post.uri)}
 					<div
 						out:fly={{
 							y: 50,
