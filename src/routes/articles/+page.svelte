@@ -1,6 +1,5 @@
 <script lang="ts">
 	import '../../app.css'
-	import { OnMount } from 'fractils'
 	import { fly } from 'svelte/transition'
 	import { backOut } from 'svelte/easing'
 	import Homepagesection from '$lib/components/organisms/Homepagesection.svelte'
@@ -8,7 +7,6 @@
 	import Tag from '$lib/components/atoms/Tag.svelte'
 	import Draggable from '$lib/components/utilities/Draggable.svelte'
 	import Postpush from '$lib/components/organisms/Postpush.svelte'
-	import { postsStore, tagStore } from '$lib/utilities/stores'
 
 	import type { PageData } from './$types'
 	import type { Posts, Article } from '$lib/utilities/types'
@@ -25,8 +23,8 @@
 
 	let activeTag: string = 'all'
 
-	$postsStore = posts
-	$tagStore = activeTag
+	
+	import { postsStore, tagStore } from '$lib/utilities/stores'
 
 	const filterPosts = (slug: string) => {
 		$postsStore = []
@@ -37,12 +35,14 @@
 			newPosts = posts.filter((item: Article) => item.tagsearch.includes(slug))
 		}
 		$postsStore = newPosts
+		console.log($postsStore)
 		$tagStore = slug
 	}
 
 	$: $tagStore, filterPosts($tagStore as string)
+	$: console.log($tagStore)
 
-	console.log($postsStore)
+	
 </script>
 
 <Logo />

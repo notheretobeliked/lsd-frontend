@@ -1,4 +1,4 @@
-import { writable } from 'svelte/store';
+import { localStorageStore } from 'fractils'
 
-export const postsStore = writable()
-export const tagStore = writable()
+export const postsStore = localStorageStore('postsStore', [])
+export const tagStore = localStorageStore('tagStore', '')
