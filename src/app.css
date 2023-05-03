@@ -10,7 +10,7 @@
 
 @layer base {
   h1 {
-    @apply font-arsonist text-9xl text-center;
+    @apply font-arsonist text-9xl text-center lowercase;
   }
 
   .content h1 {

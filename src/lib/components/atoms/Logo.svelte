@@ -4,9 +4,9 @@
 
 <a href="/articles">
 <div class="fixed transition-all hover:bg-salmon bg-blue-parrot cursor-pointer drawer min-h-screen flex flex-col justify-between">
-  <p class="drawer-link inline-block">la</p>
-  <p class="drawer-link inline-block">surface</p>
-  <p class="drawer-link inline-block">démange</p>
+  <p class="drawer-link inline-block italic font-serif">la</p>
+  <p class="drawer-link inline-block italic font-serif">surface</p>
+  <p class="drawer-link inline-block italic font-serif">démange</p>
 </div>
 </a>
 <style>
