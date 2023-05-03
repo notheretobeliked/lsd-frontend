@@ -39,7 +39,7 @@
 				on:click={activateSection}
 				on:keypress={activateSection}
 			>
-				<button class="drawer-link inline-block whitespace-nowrap">{title}</button>
+				<button class="drawer-link inline-block whitespace-nowrap font-serif italic">{title}</button>
 			</div>
 		</a>
 	{:else}
