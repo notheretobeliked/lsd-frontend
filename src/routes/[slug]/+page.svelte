@@ -33,7 +33,7 @@
 
   <Homepagesection title="A propos" bind:activeSection={activeSection} section="a-propos" on:activateSection={checksection} >
 		{#if activeSection == 'a-propos'}
-			<div>
+			<div class="max-w-4xl m-auto">
 				<h1>{data.title}</h1>
 				<div>
 					{ @html data.content }
@@ -44,7 +44,7 @@
   
   <Homepagesection title="Edition" bind:activeSection={activeSection} section="edition" on:activateSection={checksection}>
 		{#if activeSection == 'edition'}
-			<div>
+			<div class="max-w-4xl m-auto">
 				<h1>{data.title}</h1>
 				<div>
 					{ @html data.content }
@@ -55,7 +55,7 @@
 
   <Homepagesection title="Crédits" bind:activeSection={activeSection} section="credits" on:activateSection={checksection}>
 		{#if activeSection == 'credits'}
-			<div>
+			<div class="max-w-4xl m-auto">
 				<h1>{data.title}</h1>
 				<div>
 					{ @html data.content }
