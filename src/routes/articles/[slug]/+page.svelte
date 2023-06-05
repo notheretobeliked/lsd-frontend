@@ -41,9 +41,6 @@
 				{#if embed && embedType === 'vimeo'}
 					<Vimeo vimeoId={embed} />
 				{/if}
-				{#if embed && embedType === 'soundcloud'}
-					<SoundCloud soundcloudLink={embed} />
-				{/if}
 				{#if pdf}
 					<Download {...pdf} />
 				{/if}
