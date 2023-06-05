@@ -2,7 +2,7 @@ query Posts {
   generalSettings {
     title
   }
-  posts {
+  posts(first: 100) {
     nodes {
       uri
       title
