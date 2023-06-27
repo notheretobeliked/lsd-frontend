@@ -63,7 +63,7 @@
 		on:activateSection={checksection}
 	>
 		{#if activeSection == 'articles'}
-			<div>
+			<div class="max-w-[900px] m-auto">
 				
 				{#each $postsStore ? $postsStore : posts as post, i (post.uri)}
 					<div

@@ -7,22 +7,26 @@ module.exports = {
 			transparent: 'transparent',
 			current: 'currentColor',
 			white: '#ffffff',
+			stockholm:'#FAF6ED',
 			salmon: {
 				DEFAULT: '#ff9e6e',
 				light: '#ffdf9f'
 			},
-			'blue-parrot': '#7e7cf8',
+			'blue-parrot': {
+				DEFAULT: '#7e7cf8',
+				light: '#B5B4FA'
+			},
 			black: '#000000'
 		},
 		fontSize: {
 			xs: '0.75rem',
-			sm: '0.9rem',
-			base: '1.325rem',
-			xl: '1.5rem',
-			'2xl': '2.2rem',
-			'3xl': '2.5rem',
-			'4xl': ['3.125', 1.1],
-			'5xl': '4.625rem'
+			sm: ['0.9rem', 1.1],
+			base: ['1.375rem', 1.45],
+			xl: ['1.5rem', 1.1],
+			'2xl': ['2.2rem', 1.1],
+			'3xl': ['2.5', 1.1],
+			'4xl': ['3.125', 1],
+			'5xl': ['4.625rem', 1.1],
 		},
 		fontFamily: {
 			arsonist: ['Arsonist-Black'],

@@ -20,7 +20,7 @@
 </script>
 
 <Logo />
-<div class="h-screen flex flex-row homesection">
+<div class="h-screen flex flex-row homesection   bg-stockholm">
 	<Homepagesection
 		title="Acceuil"
 		bind:activeSection
@@ -28,20 +28,24 @@
 		gradient
 		on:activateSection={checksection}
 	>
-		<div class="lg:px-12 max-w-[900px] mx-auto">
+		
+		<div class="relative lg:px-12 w-full max-w-[900px] mx-auto">
+			<div class="sticky alignwide inset-0 bg-stockholm border-b border-black h-8"></div>
 			<hgroup class="mb-12">
 				<h1 class="mb-12 text-4xl">{title}</h1>
 				<h2 class="mb-12 text-center font-serif normal-case text-base italic">{author}</h2>
 			</hgroup>
 			<div>
-				{@html content || ''}
+				<div class="wp-content">
+					{@html content || ''}
+				</div>
 				{#if embed && embedType === 'soundcloud'}
-				<div class="alignwide">
+				<div class="alignwide mb-24">
 					<SoundCloud soundcloudLink={embed} />
 				</div>
 				{/if}
 				{#if embed && embedType === 'vimeo'}
-				<div class="alignwide">
+				<div class="alignwide mb-24">
 					<Vimeo vimeoId={embed} />
 				</div>
 				{/if}

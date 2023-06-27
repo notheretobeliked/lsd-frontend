@@ -5,17 +5,16 @@
 	export let author: string
 	export let uri: string = '/articles'
 	export let tags: Array<tag>
-	export let huge: boolean = false
 
 	const changeTag = (tag:string) => {
 		console.log('change tag')
 	}
 </script>
 
-<article class="mx-20 border-black border-b pb-8 hover:text-blue-parrot">
+<article class="alignwide border-black border-b pb-8 hover:text-blue-parrot">
 	<a href={uri.slice(0, -1)}>
 	<hgroup>
-		<h1 class="m-auto {huge?'text-5xl' : 'text-4xl'}">{title}</h1>
+		<h1 class="m-auto text-4xl">{title}</h1>
 		{#if author}
 			<p class="text-center italic mt-4">{author}</p>
 		{/if}
