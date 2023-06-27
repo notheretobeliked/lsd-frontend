@@ -88,22 +88,6 @@
 	</Homepagesection>
 
 	<Homepagesection
-		title="A propos"
-		bind:activeSection
-		section="a-propos"
-		on:activateSection={checksection}
-	>
-		{#if activeSection == 'a-propos'}
-			<div>
-				<h1>{data.title}</h1>
-				<div>
-					{@html data.content}
-				</div>
-			</div>
-		{/if}
-	</Homepagesection>
-
-	<Homepagesection
 		title="Edition"
 		bind:activeSection
 		section="edition"
@@ -126,6 +110,23 @@
 		on:activateSection={checksection}
 	>
 		{#if activeSection == 'credits'}
+			<div>
+				<h1>{data.title}</h1>
+				<div>
+					{@html data.content}
+				</div>
+			</div>
+		{/if}
+	</Homepagesection>
+
+
+	<Homepagesection
+		title="A propos"
+		bind:activeSection
+		section="a-propos"
+		on:activateSection={checksection}
+	>
+		{#if activeSection == 'a-propos'}
 			<div>
 				<h1>{data.title}</h1>
 				<div>

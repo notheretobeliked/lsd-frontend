@@ -30,17 +30,6 @@
 		{/if}
 	
   </Homepagesection>
-
-  <Homepagesection title="A propos" bind:activeSection={activeSection} section="a-propos" on:activateSection={checksection} >
-		{#if activeSection == 'a-propos'}
-			<div class="max-w-4xl m-auto">
-				<h1>{data.title}</h1>
-				<div>
-					{ @html data.content }
-				</div>
-			</div>
-		{/if}
-  </Homepagesection>
   
   <Homepagesection title="Edition" bind:activeSection={activeSection} section="edition" on:activateSection={checksection}>
 		{#if activeSection == 'edition'}
@@ -55,6 +44,18 @@
 
   <Homepagesection title="Crédits" bind:activeSection={activeSection} section="credits" on:activateSection={checksection}>
 		{#if activeSection == 'credits'}
+			<div class="max-w-4xl m-auto">
+				<h1>{data.title}</h1>
+				<div>
+					{ @html data.content }
+				</div>
+			</div>
+		{/if}
+  </Homepagesection>
+
+
+  <Homepagesection title="A propos" bind:activeSection={activeSection} section="a-propos" on:activateSection={checksection} >
+		{#if activeSection == 'a-propos'}
 			<div class="max-w-4xl m-auto">
 				<h1>{data.title}</h1>
 				<div>

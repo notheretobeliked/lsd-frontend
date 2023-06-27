@@ -28,18 +28,22 @@
 		gradient
 		on:activateSection={checksection}
 	>
-		<div class="lg:px-12">
-			<hgroup>
-				<h1 class="text-4xl">{title}</h1>
-				<h2 class="text-center">{author}</h2>
+		<div class="lg:px-12 max-w-[900px] mx-auto">
+			<hgroup class="mb-12">
+				<h1 class="mb-12 text-4xl">{title}</h1>
+				<h2 class="mb-12 text-center font-serif normal-case text-base italic">{author}</h2>
 			</hgroup>
 			<div>
 				{@html content || ''}
 				{#if embed && embedType === 'soundcloud'}
+				<div class="alignwide">
 					<SoundCloud soundcloudLink={embed} />
+				</div>
 				{/if}
 				{#if embed && embedType === 'vimeo'}
+				<div class="alignwide">
 					<Vimeo vimeoId={embed} />
+				</div>
 				{/if}
 				{#if pdf}
 					<Download {...pdf} />
@@ -47,12 +51,6 @@
 			</div>
 		</div>
 	</Homepagesection>
-	<Homepagesection
-		title="A propos"
-		bind:activeSection
-		section="a-propos"
-		on:activateSection={checksection}
-	/>
 
 	<Homepagesection
 		title="Edition"
@@ -65,6 +63,12 @@
 		title="Crédits"
 		bind:activeSection
 		section="credits"
+		on:activateSection={checksection}
+	/>
+	<Homepagesection
+		title="A propos"
+		bind:activeSection
+		section="a-propos"
 		on:activateSection={checksection}
 	/>
 </div>
