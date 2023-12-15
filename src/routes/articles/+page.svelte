@@ -19,10 +19,11 @@
 		activeSection = event.detail.section
 	}
 
-	
 	let { posts, alltags, allcollaborateurices } = data
 
 	let activeTag: string = 'all'
+
+	let showFilters: boolean = false
 
 	import { postsStore, tagStore } from '$lib/utilities/stores'
 
@@ -43,7 +44,7 @@
 		$tagStore = slug
 	}
 
-	$: $tagStore, filterPosts($tagStore as string)
+	$: $tagStore, filterPosts($tagStore as string), showFilters
 </script>
 
 <Logo />
@@ -51,8 +52,29 @@
 	<div class="flex flex-wrap gap-3">
 		<div class="w-full flex flex-row justify-between items-center">
 			<p class="italic text-sm mb-0">Filtrer contenu par thème :</p>
-			<Tag name="Voir tout" slug="all" />
+			<svg
+				width="32"
+				height="34"
+				viewBox="0 0 32 34"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+				class="transform cursor-pointer transition-all {showFilters ? '' : 'rotate-180'}"
+				on:click={() => {
+					showFilters = !showFilters
+				}}
+				on:keypress={() => {
+					showFilters = !showFilters
+				}}
+			>
+				<circle cx="16" cy="16" r="15.5" stroke="#7E7CF8" />
+				<path
+					d="M11.344 13.468L10.616 13.468L10.616 12.796L15.656 7.784L17.28 7.784L22.32 12.796L22.32 13.468L21.592 13.468L16.972 8.848L16.972 25.396L15.964 25.396L15.964 8.848L11.344 13.468Z"
+					fill="black"
+				/>
+			</svg>
 		</div>
+		{#if showFilters}
+		<Tag name="Voir tout" slug="all" />
 		{#each alltags as { slug, name }}
 			<Tag {name} {slug} />
 		{/each}
@@ -68,6 +90,7 @@
 				<option value={slug}>{name}</option>
 			{/each}
 		</select>
+	{/if}
 	</div>
 </Draggable>
 <div class="h-screen flex flex-row homesection">
@@ -80,6 +103,11 @@
 	>
 		{#if activeSection == 'articles'}
 			<div class="max-w-[900px] m-auto">
+				<p class="alignwide border-black mt-2 border-b pb-8 text-base text-center">
+					<em>La surface démange</em> est un espace de collecte, d’observation, de rencontre, d’expérimentation
+					et de diffusion des manières de faire, des manières de partager et de déployer des pratiques
+					antirascistes, antivalidistes, au cœur des lieux d’éducation artistique
+				</p>
 				{#each $postsStore ? $postsStore : posts as post, i (post.uri)}
 					<div
 						out:fly={{

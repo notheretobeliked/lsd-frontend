@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
-	safelist: ['content', 'ol', 'ul', 'has-lg-font-size', 'wp-block-columns', 'wp-block-separator'],
+	safelist: ['content', 'aligncenter', 'ol', 'ul', 'has-lg-font-size', 'wp-block-columns', 'wp-block-separator'],
 	theme: {
 		colors: {
 			transparent: 'transparent',

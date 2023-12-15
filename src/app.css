@@ -18,6 +18,14 @@
   .alignwide {
     @apply xl:-ml-40 xl:-mr-40;
   }
+
+  .aligncenter {
+    @apply mx-auto;
+  }
+
+  figure.aligncenter {
+    @apply flex justify-center;
+  }
 }
 
 @layer base {
