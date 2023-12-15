@@ -5,10 +5,12 @@
 	export let author: string
 	export let uri: string = '/articles'
 	export let tags: Array<tag>
+	export let tagsearch: Array<string>
+	export let date: string
+	export let categories: string
+	export let slug: string
+	export let huge: boolean = false
 
-	const changeTag = (tag:string) => {
-		console.log('change tag')
-	}
 </script>
 
 <article class="alignwide border-black border-b pb-8 hover:text-blue-parrot">

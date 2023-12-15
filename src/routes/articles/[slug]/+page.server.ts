@@ -72,7 +72,6 @@ export const load = (async ({ params }) => {
 						}
 					: null,
 				}	
-				console.log(returnObject)
 				return returnObject
 				
 			} catch (err: unknown) {

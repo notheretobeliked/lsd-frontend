@@ -22,7 +22,6 @@
 
 	$: {
 		active = activeSection == section
-		console.log(`activesection: ${activeSection}, Section: ${section}`)
 	}
 </script>
 

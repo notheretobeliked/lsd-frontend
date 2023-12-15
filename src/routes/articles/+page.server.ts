@@ -14,10 +14,11 @@ export const load = (async ({ params }) => {
 		if (!data) {
 			throw error(502, 'Unexpected JSON repsonse')
 		}
+	
+		const { generalSettings } = data
 
-		const { generalSettings, posts: { nodes: dataPosts } } = data
+		const dataPosts: HomePageNode[] = data.posts.nodes;
 
-		console.log(dataPosts)
 
     const tags: tag[] = Object.values(
       dataPosts.map((node) => node.tags.nodes.map((node) => ({
@@ -49,11 +50,26 @@ export const load = (async ({ params }) => {
         }, {})
     ).concat(tags);
     
+		const allcollaborateurices: tag[] = Object.values(
+      dataPosts.map((node) => node.collaborateurices.nodes.map((node) => ({
+          name: node.name,
+          slug: node.slug,
+        })))
+        .flat()
+        .reduce((tags: { [key: string]: tag }, tag: tag) => {
+          const key = JSON.stringify(tag);
+          if (!tags[key]) {
+            tags[key] = tag;
+          }
+          return tags;
+        }, {})
+    ).sort((a, b) => a.name.localeCompare(b.name));
     
     const posts = dataPosts.map((node) => {
 			const { uri, date, title } = node
       const thetags = node.tags.nodes.map((node) => { return node.slug })
-			const tagsearch = node.categories.nodes.map((node) => { return node.slug }).concat(thetags)
+			const thecollaborateurices = node.collaborateurices.nodes.map((node) => { return node.slug }).concat(thetags)
+			const tagsearch = node.categories.nodes.map((node) => { return node.slug }).concat(thetags, thecollaborateurices);
 
 			const categories = node.categories.nodes.map((cat: tag) => {
 				return {
@@ -68,6 +84,13 @@ export const load = (async ({ params }) => {
 					slug: node.slug
 				}
 			}).concat(categories)
+
+			const collaborateurices = node.collaborateurices.nodes.map((node) => {
+				return {
+					name: node.name,
+					slug: node.slug
+				}
+			}).concat(tags)
 
 			const huge = tagsearch.includes('recit')
 
@@ -89,7 +112,7 @@ export const load = (async ({ params }) => {
 
 		const { title } = generalSettings
 
-		return { title, posts, alltags }
+		return { title, posts, alltags, allcollaborateurices }
 	} catch (err: unknown) {
 		const httpError = err as { status: number; message: string }
 		if (httpError.message) {

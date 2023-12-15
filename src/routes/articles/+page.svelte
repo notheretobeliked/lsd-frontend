@@ -19,12 +19,17 @@
 		activeSection = event.detail.section
 	}
 
-	let { posts, alltags } = data
+	
+	let { posts, alltags, allcollaborateurices } = data
 
 	let activeTag: string = 'all'
 
-	
 	import { postsStore, tagStore } from '$lib/utilities/stores'
+
+	const changeCollaborateurices = (event: Event) => {
+		const selectElement = event.target as HTMLSelectElement
+		tagStore.set(selectElement.value)
+	}
 
 	const filterPosts = (slug: string) => {
 		$postsStore = []
@@ -35,23 +40,34 @@
 			newPosts = posts.filter((item: Article) => item.tagsearch.includes(slug))
 		}
 		$postsStore = newPosts
-		console.log($postsStore)
 		$tagStore = slug
 	}
 
 	$: $tagStore, filterPosts($tagStore as string)
-	$: console.log($tagStore)
-
-	
 </script>
 
 <Logo />
 <Draggable>
-	<div class="flex flex-wrap gap-4">
-		<Tag name="Tous" slug="all" />
+	<div class="flex flex-wrap gap-3">
+		<div class="w-full flex flex-row justify-between items-center">
+			<p class="italic text-sm mb-0">Filtrer contenu par thème :</p>
+			<Tag name="Voir tout" slug="all" />
+		</div>
 		{#each alltags as { slug, name }}
 			<Tag {name} {slug} />
 		{/each}
+		<p class="italic text-sm mb-0">Auteurices :</p>
+		<select
+			on:change={changeCollaborateurices}
+			name="author"
+			id="author"
+			class="w-full shadow-sm font-serif shadow-blue-parrot px-3 py-1 hover:bg-salmon-light text-sm"
+		>
+			<option value="all">Tout</option>
+			{#each allcollaborateurices as { slug, name }}
+				<option value={slug}>{name}</option>
+			{/each}
+		</select>
 	</div>
 </Draggable>
 <div class="h-screen flex flex-row homesection">
@@ -64,7 +80,6 @@
 	>
 		{#if activeSection == 'articles'}
 			<div class="max-w-[900px] m-auto">
-				
 				{#each $postsStore ? $postsStore : posts as post, i (post.uri)}
 					<div
 						out:fly={{
@@ -72,17 +87,15 @@
 							delay: 50 * i,
 							easing: backOut
 						}}
-					
 						in:fly={{
 							y: 50,
 							delay: 100 * i,
 							easing: backOut
 						}}
-						>
+					>
 						<Postpush {...post} />
 					</div>
 				{/each}
-			
 			</div>
 		{/if}
 	</Homepagesection>
@@ -118,7 +131,6 @@
 			</div>
 		{/if}
 	</Homepagesection>
-
 
 	<Homepagesection
 		title="A propos"

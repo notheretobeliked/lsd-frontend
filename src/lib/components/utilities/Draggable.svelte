@@ -21,15 +21,12 @@
     moving = false;
   }
 
-  onMount(() => {
-    console.log(moving);
-  });
 </script>
 
 <section
   on:mousedown={onMouseDown}
   style={`left: ${left}px; top: ${top}px;`}
-  class="cursor-move fixed user-select-none left-4 top-48 z-[100] bg-white p-4 border-salmon border shadow-sm w-96 p-30 rounded"
+  class="cursor-move fixed user-select-none left-4 top-48 z-[100] bg-white p-4 border-salmon border shadow-sm w-80 p-30 rounded"
 >
   <slot />
 </section>

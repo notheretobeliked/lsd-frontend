@@ -3,15 +3,22 @@ export interface tag {
 	slug: string
 }
 
+export interface generalSettings {
+	title: string
+}
+
 export interface HomePageNode {
 	uri: string
 	title: string
 	date: string
 	tags: {
-		edges: tag[]
+		nodes: tag[]
+	}
+	collaborateurices: {
+		nodes: tag[]
 	}
 	categories: {
-		edges: tag[]
+		nodes: tag[]
 	}
 	infos: {
 		author: string
@@ -20,11 +27,12 @@ export interface HomePageNode {
 
 export interface HomepageData {
 	posts: Posts[]
-	generalSettings: {
-		title: string
-	}
+	generalSettings: generalSettings
 	alltags: {
 		tag: tag[]
+	}
+	allcollaborateurices: {
+		collaborateurice: tag[]
 	}
 }
 
@@ -32,6 +40,7 @@ export interface Posts {
   posts: {
     nodes: HomePageNode[]
   }
+	nodes?: HomePageNode[]
 }
 
 export interface PageSEO {

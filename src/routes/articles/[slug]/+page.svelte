@@ -13,7 +13,6 @@
 		activeSection = event.detail.section
 	}
 
-	$: console.log(activeSection)
 
 	const { title, author, embedType, embed, pdf, content } = data
 

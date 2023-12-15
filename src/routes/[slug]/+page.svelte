@@ -8,14 +8,12 @@
 
   export let data: PageData;
 
-	console.log(data.slug)
   let activeSection:string = data.slug ?? 'home'
 	
   function checksection(event: CustomEvent) {
     activeSection = event.detail.section
   }
 
-  $: console.log(activeSection)
   
 </script>
 <Logo />
