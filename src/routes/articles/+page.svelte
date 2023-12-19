@@ -11,6 +11,8 @@
 	import type { PageData } from './$types'
 	import type { Posts, Article } from '$lib/utilities/types'
 
+	import { slide } from 'svelte/transition';
+
 	export let data: PageData
 
 	let activeSection: string = 'articles'
@@ -49,7 +51,7 @@
 
 <Logo />
 <Draggable>
-	<div class="flex flex-wrap gap-3">
+	<div class="flex flex-wrap gap-3" >
 		<div class="w-full flex flex-row justify-between items-center">
 			<p class="italic text-sm mb-0">Filtrer contenu par thème :</p>
 			<svg
@@ -58,7 +60,7 @@
 				viewBox="0 0 32 34"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
-				class="transform cursor-pointer transition-all {showFilters ? '' : 'rotate-180'}"
+				class="transform cursor-pointer transition-all {showFilters ? 'max-md:rotate-180' : 'rotate-0 md:rotate-180'}"
 				on:click={() => {
 					showFilters = !showFilters
 				}}
@@ -74,6 +76,7 @@
 			</svg>
 		</div>
 		{#if showFilters}
+		<div class="flex flex-wrap gap-3" transition:slide={{ duration: 300 }}>
 		<Tag name="Voir tout" slug="all" />
 		{#each alltags as { slug, name }}
 			<Tag {name} {slug} />
@@ -90,10 +93,11 @@
 				<option value={slug}>{name}</option>
 			{/each}
 		</select>
+	</div>
 	{/if}
 	</div>
 </Draggable>
-<div class="h-screen flex flex-row homesection">
+<div class="h-screen flex flex-col md:flex-row homesection">
 	<Homepagesection
 		title="Articles"
 		bind:activeSection
@@ -102,8 +106,8 @@
 		on:activateSection={checksection}
 	>
 		{#if activeSection == 'articles'}
-			<div class="max-w-[900px] m-auto">
-				<p class="alignwide border-black mt-2 border-b pb-8 text-base text-center">
+			<div class="max-w-[900px] m-auto px-4 md:px-0">
+				<p class="alignwide border-black mt-2 border-b pb-8 text-center text-sm md:text-base">
 					<em>La surface démange</em> est un espace de collecte, d’observation, de rencontre, d’expérimentation
 					et de diffusion des manières de faire, des manières de partager et de déployer des pratiques
 					antirascistes, antivalidistes, au cœur des lieux d’éducation artistique

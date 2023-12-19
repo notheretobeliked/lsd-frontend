@@ -14,11 +14,11 @@
     activeSection = event.detail.section
   }
 
-  
+
 </script>
 <Logo />
-<div class="h-screen flex flex-row homesection">
-  <Homepagesection title="Articles" bind:activeSection={activeSection} section="articles" gradient on:activateSection={checksection}>
+<div class="h-screen flex flex-col md:flex-row homesection">
+<Homepagesection title="Articles" bind:activeSection={activeSection} section="articles" gradient on:activateSection={checksection}>
 		{#if activeSection == 'articles'}
 		<div>
 			{#each data.posts ??[] as post}

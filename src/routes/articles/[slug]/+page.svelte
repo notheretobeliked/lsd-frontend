@@ -19,7 +19,7 @@
 </script>
 
 <Logo />
-<div class="h-screen flex flex-row homesection   bg-stockholm">
+<div class="h-screen flex flex-col md:flex-row homesection">
 	<Homepagesection
 		title="Acceuil"
 		bind:activeSection
@@ -28,7 +28,7 @@
 		on:activateSection={checksection}
 	>
 		
-		<div class="relative lg:px-12 w-full max-w-[900px] mx-auto">
+		<div class="relative px-2 lg:px-12 w-full max-w-[900px] mx-auto">
 			<div class="sticky alignwide inset-0 bg-stockholm border-b border-black h-8"></div>
 			<hgroup class="mb-12">
 				<h1 class="mb-12 text-4xl">{title}</h1>

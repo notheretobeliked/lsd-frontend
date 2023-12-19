@@ -15,8 +15,12 @@
     @apply my-8 border border-black;
   }
 
+  .content > * {
+    @apply md:px-20 max-w-[900px] mx-auto;
+  }
+
   .alignwide {
-    @apply xl:-ml-40 xl:-mr-40;
+    @apply px-0;
   }
 
   .aligncenter {
@@ -29,8 +33,12 @@
 }
 
 @layer base {
+  body {
+    --wp--preset--spacing--80: 5rem;
+  }
+
   h1 {
-    @apply font-arsonist text-5xl text-center lowercase;
+    @apply font-arsonist text-2xl md:text-3xl lg:text-5xl text-center lowercase;
   }
 
   .content h1 {
@@ -40,7 +48,7 @@
   p,
   li,
   td {
-    @apply mb-4 font-serif text-base;
+    @apply mb-4 font-serif text-sm md:text-base;
   }
 
   .has-lg-font-size {
@@ -89,3 +97,4 @@
   font-display: swap;
   font-style: italic;
 }
+

@@ -26,7 +26,7 @@
 </script>
 
 <div
-	class="{activeSection === 'a-propos' ? 'bg-blue-parrot' : 'bg-stockholm'} {active ? 'overflow-y-scroll' : 'overflow-hidden'} max-h-screen page-section flex flex-col transition-all duration-500 flex-grow shadow-right min-h-screen"
+	class="{activeSection === 'a-propos' ? 'bg-blue-parrot' : 'bg-stockholm'} {active ? 'overflow-y-scroll overflow-x-hidden min-h-[82vh] md:min-h-sc' : 'overflow-hidden'} max-h-screen page-section flex flex-col transition-all duration-500 flex-grow shadow-right"
 	class:active
 >
 	{#if !active}
@@ -34,7 +34,7 @@
 			<div
 				class=" {gradient
 					? 'bg-gradient-to-r from-blue-parrot to-salmon'
-					: 'bg-salmon hover:bg-blue-parrot'} cursor-pointer drawer min-h-screen"
+					: 'bg-salmon hover:bg-blue-parrot'} cursor-pointer drawer min-h-[92vh] md:min-h-screen"
 				on:click={activateSection}
 				on:keypress={activateSection}
 			>
@@ -48,22 +48,22 @@
 	{/if}
 </div>
 
-<style>
+<style lang="postcss">
+
 	.page-section {
-		width: 5vw;
+		@apply w-full md:w-[5vw];
 	}
 
 	.page-section:not(.active):hover {
-		width: 6vw;
+		@apply w-full md:w-[6vw];
 	}
 
 	.page-section.active {
-		max-width: 87vw;
-		width: 100%;
+		@apply w-full md:max-w-[87vw];
 	}
 
 	.drawer-link {
-		transform: rotate(90deg) translate(0, -2vw);
-		transform-origin: left;
+		@apply md:rotate-90 md:transform md:translate-y-[0] md:translate-x-[2vw] origin-left;
 	}
 </style>
+
