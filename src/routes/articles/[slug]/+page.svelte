@@ -136,33 +136,23 @@
 
 		.halix {
 			font-family: DINdong;
-
-			@apply pl-3 md:pl-12;
 		}
 
 		.felixe {
 			font-family: BBBBaskervvol-Fondue;
-
-			@apply pl-3 md:pl-12;
 		}
 
 		.axxenne {
 			font-family: DuctusRegular;
-
-			@apply pl-3 md:pl-12;
 		}
 
 		.enza {
 			font-family: Homoneta-Regular;
-
-			@apply pl-3 md:pl-12;
 		}
 
 		.laurence {
 			font-family: Amiamie-Light;
 			font-weight: 200;
-
-			@apply pl-3 md:pl-12;
 		}
 	</style>
 {/if}
