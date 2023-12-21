@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'Amiamie Amiamie';
+    src: url('Amiamie-LightItalic.woff2') format('woff2'),
+        url('Amiamie-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Homoneta';
+    src: url('Homoneta-Regular.woff2') format('woff2'),
+        url('Homoneta-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ductus';
+    src: url('DuctusRegular.woff2') format('woff2'),
+        url('DuctusRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Amiamie';
+    src: url('Amiamie-Light.woff2') format('woff2'),
+        url('Amiamie-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DINdong <3';
+    src: url('DINdong.woff2') format('woff2'),
+        url('DINdong.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Baskervvol Fondue';
+    src: url('BBBBaskervvol-Fondue.woff2') format('woff2'),
+        url('BBBBaskervvol-Fondue.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
