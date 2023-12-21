@@ -52,7 +52,11 @@
   }
 
   .has-lg-font-size {
-    @apply text-xl;
+    @apply text-base md:text-xl;
+  }
+
+  .has-text-align-center {
+    @apply text-center;
   }
 
   content ul {

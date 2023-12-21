@@ -5,6 +5,7 @@ import { checkResponse, graphqlQuery } from '$lib/utilities/graphql'
 import { error } from '@sveltejs/kit'
 
 export const load = (async ({ params }) => {
+	
   const {slug} = params
 	try {
 		const response = await graphqlQuery(postsQuery, { endCursor: '', postsPerPage: 20 })
