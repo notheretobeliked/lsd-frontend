@@ -9,6 +9,8 @@ if (browser) {
 
 export const postsStore = writable([])
 export const tagStore = writable(initialTag)
+export const burgerStore = writable<boolean>(false)
+export const activeSectionStore = writable<string>('articles')
 
 tagStore.subscribe((value) => {
 	if (browser) {

@@ -6,12 +6,20 @@
 	import { SoundCloud, Vimeo } from 'sveltekit-embed'
 
 	export let data: PageData
+	
 
-	let activeSection = 'home'
+	import { burgerStore, activeSectionStore } from '$lib/utilities/stores';
+	burgerStore.set(false)
+	let activeSection: string = 'articles	'
+	activeSectionStore.set("articles");
 
 	function checksection(event: CustomEvent) {
-		activeSection = event.detail.section
+    activeSectionStore.set(event.detail.section);
 	}
+
+	$: activeSection = $activeSectionStore;
+
+
 
 	const { title, author, embedType, embed, pdf, content, slug } = data
 </script>
@@ -19,9 +27,9 @@
 <Logo />
 <div class="h-screen flex flex-col md:flex-row homesection">
 	<Homepagesection
-		title="Acceuil"
+		title="Articles"
 		bind:activeSection
-		section="home"
+		section="articles"
 		gradient
 		on:activateSection={checksection}
 	>
