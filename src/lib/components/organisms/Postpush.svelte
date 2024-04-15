@@ -7,9 +7,7 @@
 	export let tags: Array<tag>
 	export let tagsearch: Array<string>
 	export let date: string
-	export let categories: string
 	export let slug: string
-	export let huge: boolean = false
 
 </script>
 

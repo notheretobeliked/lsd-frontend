@@ -4,7 +4,6 @@
 	import { backOut } from 'svelte/easing'
 	import Homepagesection from '$lib/components/organisms/Homepagesection.svelte'
 	import Logo from '$lib/components/atoms/Logo.svelte'
-	import Tag from '$lib/components/atoms/Tag.svelte'
 	import Draggable from '$lib/components/utilities/Draggable.svelte'
 	import Postpush from '$lib/components/organisms/Postpush.svelte'
 
@@ -22,6 +21,8 @@
 	}
 
 	let { posts, alltags, allcollaborateurices } = data
+
+	console.log(alltags)
 
 	let activeTag: string = 'all'
 
@@ -119,7 +120,7 @@
 		
 			<div class="max-w-[900px] m-auto px-4 md:px-0">
 				<p class="alignwide border-black mt-2 border-b pb-8 text-center text-sm md:text-base">
-					<em>La surface démange</em> est une ligne de recherche sur les approches critiques de l’éducation artistique. Cette plateforme accueille des contributions sur les formes pédagogiques émancipatrices issues de différents milieux dont l'enseignement su-périeur d’art et de design, les centre d’art et les milieux militants artistiques.
+					<em>La surface démange</em> est une ligne de recherche sur les approches critiques de l’éducation artistique. Cette plateforme accueille des contributions sur les formes pédagogiques émancipatrices issues de différents milieux dont l'enseignement supérieur d’art et de design, les centre d’art et les milieux militants artistiques.
 				</p>
 				{#each $postsStore ? $postsStore : posts as post, i (post.uri)}
 					<div

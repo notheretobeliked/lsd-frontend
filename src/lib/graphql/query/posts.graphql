@@ -13,12 +13,6 @@ query Posts {
           slug
         }
       }
-      categories {
-        nodes {
-          name
-          slug
-        }
-      }
       collaborateurices {
         nodes {
           name
