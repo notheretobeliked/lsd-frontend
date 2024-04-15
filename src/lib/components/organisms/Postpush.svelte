@@ -23,7 +23,7 @@
 	</hgroup>
 	</a>
 		{#if tags}
-			<div class="flex flex-row gap-3 justify-center mt-4">
+			<div class="flex flex-row flex-wrap gap-3 justify-center mt-4">
 				{#each tags as { name, slug }}
 					<Tag {name} {slug} />
 				{/each}

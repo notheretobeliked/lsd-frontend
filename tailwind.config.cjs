@@ -9,12 +9,12 @@ module.exports = {
 			white: '#ffffff',
 			stockholm:'#FAF6ED',
 			salmon: {
-				DEFAULT: '#ff9e6e',
-				light: '#ffdf9f'
+				DEFAULT: '#f0eea2',
+				light: '#f0eea2'
 			},
 			'blue-parrot': {
-				DEFAULT: '#7e7cf8',
-				light: '#B5B4FA'
+				DEFAULT: '#fcadba',
+				light: '#fcadba'
 			},
 			black: '#000000'
 		},

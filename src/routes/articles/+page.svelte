@@ -29,7 +29,7 @@
 
 	import { postsStore, tagStore, activeSectionStore } from '$lib/utilities/stores'
 
-	const changeCollaborateurices = (event: Event) => {
+	const changeView = (event: Event) => {
 		const selectElement = event.target as HTMLSelectElement
 		tagStore.set(selectElement.value)
 	}
@@ -88,13 +88,21 @@
 				</div>
 				{#if showFilters}
 				<div class="flex flex-wrap gap-3" transition:slide={{ duration: 300 }}>
-				<Tag name="Voir tout" slug="all" />
-				{#each alltags as { slug, name }}
-					<Tag {name} {slug} />
-				{/each}
+					<p class="italic text-sm mb-0">Mot-clefs :</p>
+					<select
+						on:change={changeView}
+						name="tags"
+						id="tags"
+						class="w-full shadow-sm font-serif shadow-blue-parrot px-3 py-1 hover:bg-salmon-light text-sm"
+					>
+						<option value="all">Tout</option>
+						{#each alltags as { slug, name }}
+							<option value={slug}>{name}</option>
+						{/each}
+					</select>
 				<p class="italic text-sm mb-0">Auteurices :</p>
 				<select
-					on:change={changeCollaborateurices}
+					on:change={changeView}
 					name="author"
 					id="author"
 					class="w-full shadow-sm font-serif shadow-blue-parrot px-3 py-1 hover:bg-salmon-light text-sm"
@@ -111,9 +119,7 @@
 		
 			<div class="max-w-[900px] m-auto px-4 md:px-0">
 				<p class="alignwide border-black mt-2 border-b pb-8 text-center text-sm md:text-base">
-					<em>La surface démange</em> est un espace de collecte, d’observation, de rencontre, d’expérimentation
-					et de diffusion des manières de faire, des manières de partager et de déployer des pratiques
-					antirascistes, antivalidistes, au cœur des lieux d’éducation artistique
+					<em>La surface démange</em> est une ligne de recherche sur les approches critiques de l’éducation artistique. Cette plateforme accueille des contributions sur les formes pédagogiques émancipatrices issues de différents milieux dont l'enseignement su-périeur d’art et de design, les centre d’art et les milieux militants artistiques.
 				</p>
 				{#each $postsStore ? $postsStore : posts as post, i (post.uri)}
 					<div

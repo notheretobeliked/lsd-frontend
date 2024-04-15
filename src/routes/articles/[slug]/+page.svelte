@@ -6,20 +6,17 @@
 	import { SoundCloud, Vimeo } from 'sveltekit-embed'
 
 	export let data: PageData
-	
 
-	import { burgerStore, activeSectionStore } from '$lib/utilities/stores';
+	import { burgerStore, activeSectionStore } from '$lib/utilities/stores'
 	burgerStore.set(false)
-	let activeSection: string = 'articles	'
-	activeSectionStore.set("articles");
+	let activeSection: string = 'articles'
+	activeSectionStore.set('articles')
 
 	function checksection(event: CustomEvent) {
-    activeSectionStore.set(event.detail.section);
+		activeSectionStore.set(event.detail.section)
 	}
 
-	$: activeSection = $activeSectionStore;
-
-
+	$: activeSection = $activeSectionStore
 
 	const { title, author, embedType, embed, pdf, content, slug } = data
 </script>
@@ -104,6 +101,7 @@
 			src: url(/fonts/DuctusRegular.woff2) format('woff2'),
 				url(/fonts/DuctusRegular.woff) format('woff');
 			font-display: swap;
+			font-feature-settings: "liga" 1;
 		}
 
 		@font-face {
@@ -112,6 +110,7 @@
 			src: url(/fonts/Homoneta-Regular.woff2) format('woff2'),
 				url(/fonts/Homoneta-Regular.woff) format('woff');
 			font-display: swap;
+			font-feature-settings: "liga" 1;
 		}
 		@font-face {
 			font-family: Amiamie-Light;
@@ -119,6 +118,7 @@
 			src: url(/fonts/Amiamie-Light.woff2) format('woff2'),
 				url(/fonts/Amiamie-Light.woff) format('woff');
 			font-display: swap;
+			font-feature-settings: "liga" 1;
 		}
 
 		@font-face {
@@ -128,6 +128,7 @@
 				url(/fonts/Amiamie-LightItalic.woff) format('woff');
 			font-display: swap;
 			font-style: italic;
+			font-feature-settings: "liga" 1;
 		}
 
 		h4 {
