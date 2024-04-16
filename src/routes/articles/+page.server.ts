@@ -1,3 +1,5 @@
+export const prerender = true
+
 import type { PageServerLoad } from './$types'
 import type { HomepageData, tag, HomePageNode } from '$lib/utilities/types'
 import postsQuery from '$lib/graphql/query/posts.graphql?raw'

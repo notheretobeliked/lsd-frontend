@@ -1,3 +1,5 @@
+export const prerender = true
+
 import type { PageServerLoad } from './$types'
 import type { PostData, EmbedType, tag } from '$lib/utilities/types'
 import postQuery from '$lib/graphql/query/post.graphql?raw'
