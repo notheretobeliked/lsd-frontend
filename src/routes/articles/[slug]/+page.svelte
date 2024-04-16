@@ -34,7 +34,7 @@
 			<div class="sticky alignwide inset-0 bg-stockholm border-b border-black h-8" />
 			<hgroup class="mb-12">
 				<h1 class="mb-12 text-4xl">{title}</h1>
-				<h2 class="mb-12 text-center font-serif normal-case text-base italic">{author}</h2>
+				{#if author}<h2 class="mb-12 text-center font-serif normal-case text-base italic">{author}</h2>{/if}
 			</hgroup>
 			<div>
 				<div class="wp-content">
