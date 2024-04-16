@@ -5,7 +5,18 @@ import pageQuery from '$lib/graphql/query/page.graphql?raw'
 import { checkResponse, graphqlQuery } from '$lib/utilities/graphql'
 import { error } from '@sveltejs/kit'
 
+function replaceUrl(content: string | null): string | null {
+	if (typeof content !== 'string') {
+		return content;
+	}
+	const oldUrl = 'lsd-stg.villa.arson.org/app/uploads';
+	const newUrl = 'villa-arson-assets.ams3.digitaloceanspaces.com/lsd/app/uploads';
+	return content.replace(new RegExp(oldUrl, 'g'), newUrl);
+}
+
+
 export const load = (async ({ params }) => {
+
 	const { slug } = params
 	switch (slug) {
 		case 'articles':

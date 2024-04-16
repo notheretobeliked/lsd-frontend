@@ -6,10 +6,13 @@ import postQuery from '$lib/graphql/query/post.graphql?raw'
 import { checkResponse, graphqlQuery } from '$lib/utilities/graphql'
 import { error } from '@sveltejs/kit'
 
-function replaceUrl(content: string): string {
-	const oldUrl = 'lsd-stg.villa.arson.org/app/uploads'
-	const newUrl = 'villa-arson-assets.ams3.digitaloceanspaces.com/lsd/app/uploads'
-	return content.replace(new RegExp(oldUrl, 'g'), newUrl)
+function replaceUrl(content: string | null): string | null {
+	if (typeof content !== 'string') {
+		return content;
+	}
+	const oldUrl = 'lsd-stg.villa.arson.org/app/uploads';
+	const newUrl = 'villa-arson-assets.ams3.digitaloceanspaces.com/lsd/app/uploads';
+	return content.replace(new RegExp(oldUrl, 'g'), newUrl);
 }
 
 function getVimeoId(url: string): string | null {
