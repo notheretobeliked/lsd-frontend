@@ -89,7 +89,7 @@
 				</div>
 				{#if showFilters}
 				<div class="flex flex-wrap gap-3" transition:slide={{ duration: 300 }}>
-					<p class="italic text-sm mb-0">Mot-clefs :</p>
+					<p class="italic text-sm mb-0">Mots-clef :</p>
 					<select
 						on:change={changeView}
 						name="tags"
