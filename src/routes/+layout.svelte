@@ -29,14 +29,14 @@
 
 <main class="wrapper">
 	<div class="fixed bottom-3 left-1 z-50 rounded-full bg-salmon-light p-2">
-		<button on:click={toggleMenu} on:keypress={toggleMenu}>
+		<!-- <button on:click={toggleMenu} on:keypress={toggleMenu}>
 			<div class:tham-active={menuOpen} class="tham tham-e-squeeze tham-w-6">
 				<div class="tham-box">
 					<div class="tham-inner" />
 				</div>
 			</div>
 			<p class="sr-only">Menu</p>
-		</button>
+		</button> -->
 	</div>
 	<slot />
 </main>
