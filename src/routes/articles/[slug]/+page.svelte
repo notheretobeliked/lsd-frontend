@@ -86,6 +86,7 @@
 			src: url(/fonts/BBBBaskervvol-Fondue.woff2) format('woff2'),
 				url(/fonts/BBBBaskervvol-Fondue.woff) format('woff');
 			font-display: swap;
+			font-feature-settings: "liga" 1;
 		}
 
 		@font-face {
@@ -93,6 +94,7 @@
 			font-weight: 200;
 			src: url(/fonts/DINdong.woff2) format('woff2'), url(/fonts/DINdong.woff) format('woff');
 			font-display: swap;
+			font-feature-settings: "liga" 1;
 		}
 
 		@font-face {
