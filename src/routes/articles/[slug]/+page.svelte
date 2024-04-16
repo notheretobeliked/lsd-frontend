@@ -124,6 +124,24 @@
 		}
 
 		@font-face {
+			font-family: Adelphe;
+			font-weight: 200;
+			src: url(/fonts/Adelphe-GerminalRegular.woff2) format('woff2'),
+				url(/fonts/Adelphe-GerminalRegular.woff) format('woff');
+			font-display: swap;
+			font-feature-settings: "liga" 1;
+		}
+
+		@font-face {
+			font-family: Adelphe;
+			font-weight: 200;
+			src: url(/fonts/Adelphe-GerminalItalic.woff2) format('woff2'),
+				url(/fonts/Adelphe-GerminalItalic.woff) format('woff');
+			font-display: swap;
+			font-style: italic;
+			font-feature-settings: "liga" 1;
+		}
+		@font-face {
 			font-family: Amiamie-Light;
 			font-weight: 200;
 			src: url(/fonts/Amiamie-LightItalic.woff2) format('woff2'),
@@ -163,6 +181,11 @@
 
 		.laurence {
 			font-family: Amiamie-Light;
+			font-weight: 200;
+		}
+
+		.cc {
+			font-family: Adelphe;
 			font-weight: 200;
 		}
 	</style>
