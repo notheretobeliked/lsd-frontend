@@ -3,12 +3,14 @@
 	import '../app.css'
 	import { ProgressBar } from '@prgm/sveltekit-progress-bar'
   import { burgerStore, activeSectionStore } from '$lib/utilities/stores'
+  import OpenGraph from '$lib/components/OpenGraph.svelte';
 
   let menuOpen: boolean
 
   $: menuOpen = $burgerStore
-
+  export let data: PageData
   let showThisAgain: string
+  const { pageTitle, metadescription, url, temp, image, squareImage } = data as PageData
 
 
 	$: menuOpen
@@ -21,11 +23,12 @@
       activeSectionStore.set('')
     } else activeSectionStore.set(showThisAgain)
 	}
-
+	console.log(data)
 
 </script>
 
 <ProgressBar class="text-blue-parrot" zIndex={900} />
+<OpenGraph {pageTitle} {metadescription} siteUrl={url} {image} {squareImage} />
 
 <main class="wrapper">
 	<div class="fixed bottom-3 left-1 z-50 rounded-full bg-salmon-light p-2">
