@@ -126,8 +126,8 @@
 		@font-face {
 			font-family: Adelphe;
 			font-weight: 200;
-			src: url(/fonts/Adelphe-GerminalRegular.woff2) format('woff2'),
-				url(/fonts/Adelphe-GerminalRegular.woff) format('woff');
+			src: url(/fonts/Adelphe-FructidorRegular.woff2) format('woff2'),
+				url(/fonts/Adelphe-FructidorRegular.woff) format('woff');
 			font-display: swap;
 			font-feature-settings: "liga" 1;
 		}
@@ -135,8 +135,26 @@
 		@font-face {
 			font-family: Adelphe;
 			font-weight: 200;
-			src: url(/fonts/Adelphe-GerminalItalic.woff2) format('woff2'),
-				url(/fonts/Adelphe-GerminalItalic.woff) format('woff');
+			src: url(/fonts/Adelphe-FructidorItalic.woff2) format('woff2'),
+				url(/fonts/Adelphe-FructidorItalic.woff) format('woff');
+			font-display: swap;
+			font-style: italic;
+			font-feature-settings: "liga" 1;
+		}
+		@font-face {
+			font-family: Adelphe;
+			font-weight: 400;
+			src: url(/fonts/Adelphe-FructidorSemiBold.woff2) format('woff2'),
+				url(/fonts/Adelphe-FructidorSemiBold.woff) format('woff');
+			font-display: swap;
+			font-feature-settings: "liga" 1;
+		}
+
+		@font-face {
+			font-family: Adelphe;
+			font-weight: 400;
+			src: url(/fonts/Adelphe-FructidorSemiBoldItalic.woff2) format('woff2'),
+				url(/fonts/Adelphe-FructidorSemiBoldItalic.woff) format('woff');
 			font-display: swap;
 			font-style: italic;
 			font-feature-settings: "liga" 1;
