@@ -12,7 +12,7 @@
 </script>
 
 <article class="alignwide border-black border-b pb-8 hover:text-blue-parrot">
-	<a href={uri.slice(0, -1)}>
+	<a href={uri.replace(/\/$/, '')}>
 	<hgroup>
 		<h1 class="m-auto text-4xl">{title}</h1>
 		{#if author}
