@@ -1,4 +1,6 @@
-import type { PageServerLoad } from './$types'
+export const prerender = true
+
+import type { EntryGenerator, PageServerLoad } from './$types'
 import type { HomepageData, PageData } from '$lib/utilities/types'
 import postsQuery from '$lib/graphql/query/posts.graphql?raw'
 import pageQuery from '$lib/graphql/query/page.graphql?raw'
@@ -14,6 +16,13 @@ function replaceUrl(content: string | null): string | null {
 	return content.replace(new RegExp(oldUrl, 'g'), newUrl);
 }
 
+
+// The WordPress pages this route renders, so they are prerendered even if nothing links to them
+export const entries = (() => [
+	{ slug: 'a-propos' },
+	{ slug: 'edition' },
+	{ slug: 'credits' }
+]) satisfies EntryGenerator
 
 export const load = (async ({ params }) => {
 
@@ -98,5 +107,7 @@ export const load = (async ({ params }) => {
 				throw error(500, String(err))
 			}
 			break
+		default:
+			throw error(404, 'Not found')
 	}
 }) satisfies PageServerLoad
