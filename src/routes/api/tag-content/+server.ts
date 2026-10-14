@@ -45,10 +45,12 @@ export const GET = (async ({ url }: RequestEvent) => {
     return json(posts)
 		
 	} catch (err: unknown) {
+		// Errors thrown with error() above already carry a status and body, so pass them on
+		if (err && typeof err === 'object' && 'status' in err && 'body' in err) throw err
 		const httpError = err as { status: number; message: string }
 		if (httpError.message) {
 			throw error(httpError.status ?? 500, httpError.message)
 		}
-		throw error(500, err as string)
+		throw error(500, String(err))
 	}
 })satisfies RequestHandler

@@ -1,5 +1,4 @@
 import { GRAPHQL_ENDPOINT } from '$env/static/private';
-import type { PostsQueryVariables } from '$lib/generated/graphql';
 
 import { error } from '@sveltejs/kit';
 
@@ -14,7 +13,7 @@ export function checkResponse(response: Response) {
 	}
 }
 
-type QueryVariables = PostsQueryVariables;
+type QueryVariables = Record<string, unknown>;
 
 export async function graphqlQuery(query: string, variables: QueryVariables = {}) {
 	return fetch(GRAPHQL_ENDPOINT, {

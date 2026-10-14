@@ -20,23 +20,33 @@ function getVimeoId(url: string): string | null {
 	return match ? match[1] : null
 }
 
+// WordPress stores non-ASCII slugs percent-encoded in lowercase, and WPGraphQL only
+// resolves the URI in that exact form
+function encodeSlug(slug: string): string {
+	return encodeURIComponent(slug).replace(/%[0-9A-F]{2}/g, (s) => s.toLowerCase())
+}
+
 export const load = (async ({ params }) => {
 	const { slug } = params
 
 	try {
-		const response = await graphqlQuery(postQuery, { uri: `/articles/${slug}` })
+		const response = await graphqlQuery(postQuery, { uri: `/articles/${encodeSlug(slug)}` })
 		checkResponse(response)
 
 		const { data }: { data: PostData } = await response.json()
 
-		if (!data || !data.post) {
+		if (!data) {
 			throw error(502, 'Unexpected JSON repsonse')
+		}
+
+		if (!data.post) {
+			throw error(404, 'Article not found')
 		}
 
 		const {
 			content,
 			title,
-			seo: { description }
+			seo: { metaDesc: description }
 		} = data.post
 
 		const replacedContent = replaceUrl(content) // Replace in content
@@ -90,10 +100,12 @@ export const load = (async ({ params }) => {
 		}
 		return returnObject
 	} catch (err: unknown) {
+		// Errors thrown with error() above already carry a status and body, so pass them on
+		if (err && typeof err === 'object' && 'status' in err && 'body' in err) throw err
 		const httpError = err as { status: number; message: string }
 		if (httpError.message) {
 			throw error(httpError.status ?? 500, httpError.message)
 		}
-		throw error(500, err as string)
+		throw error(500, String(err))
 	}
 }) satisfies PageServerLoad

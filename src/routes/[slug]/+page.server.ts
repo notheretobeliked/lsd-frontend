@@ -55,11 +55,13 @@ export const load = (async ({ params }) => {
 
 				return { title, posts }
 			} catch (err: unknown) {
+				// Errors thrown with error() above already carry a status and body, so pass them on
+				if (err && typeof err === 'object' && 'status' in err && 'body' in err) throw err
 				const httpError = err as { status: number; message: string }
 				if (httpError.message) {
 					throw error(httpError.status ?? 500, httpError.message)
 				}
-				throw error(500, err as string)
+				throw error(500, String(err))
 			}
 			break
 		case 'edition':
@@ -77,7 +79,7 @@ export const load = (async ({ params }) => {
 				const {
 					content,
 					title,
-					seo: { description }
+					seo: { metaDesc: description }
 				} = data.page
 
 				return {
@@ -87,11 +89,13 @@ export const load = (async ({ params }) => {
 					slug
 				}
 			} catch (err: unknown) {
+				// Errors thrown with error() above already carry a status and body, so pass them on
+				if (err && typeof err === 'object' && 'status' in err && 'body' in err) throw err
 				const httpError = err as { status: number; message: string }
 				if (httpError.message) {
 					throw error(httpError.status ?? 500, httpError.message)
 				}
-				throw error(500, err as string)
+				throw error(500, String(err))
 			}
 			break
 	}

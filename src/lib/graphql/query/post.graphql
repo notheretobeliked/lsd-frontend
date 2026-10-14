@@ -6,7 +6,7 @@ query Post($uri: ID!) {
     date
     uri
     seo {
-      description
+      metaDesc
     }
     tags {
       nodes {

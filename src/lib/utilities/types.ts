@@ -44,7 +44,7 @@ export interface Posts {
 }
 
 export interface PageSEO {
-	description: string
+	metaDesc: string
 }
 
 export interface Page {

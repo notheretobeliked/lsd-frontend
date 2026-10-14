@@ -1,4 +1,4 @@
-query Posts($tag: String ) {
+query PostsByTag($tag: String ) {
   posts(where: {tag: $tag}) {
     edges {
       node {
